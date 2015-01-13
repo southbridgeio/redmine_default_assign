@@ -9,20 +9,16 @@ Allows you to specify a global default as well as per project defaults.
 
 == Getting the plugin
 
-A copy of the plugin can be downloaded from {GitHub}[http://github.com/rchady/redmine_default_assign].
+A copy of the plugin can be downloaded from {GitHub}[https://github.com/giddie/redmine_default_assign].
 
 == Installation and Setup
 
 1. Follow the Redmine plugin installation steps at the {Redmine Wiki}[http://www.redmine.org/wiki/redmine/Plugins].
-2. Make sure you did the rake db:migrate_plugins step from above.
-3. Restart your Redmine web servers (e.g. mongrel, thin, mod_rails)
+2. Make sure you did the <tt>rake redmine:plugins:migrate RAILS_ENV=production</tt> step from above.
+3. Restart your Redmine web servers (e.g. mongrel, thin, mod_rails).
 
 == Special Note
 
 When you create a new project, the 'Default Assignee' dropdown will be
 empty because there are no users in your project.  You need to add users
 as members of your project and then the dropdown will be populated.
-
-== Plugin help
-
-If you need help you can contact the maintainer at http://github.com/rchady.
