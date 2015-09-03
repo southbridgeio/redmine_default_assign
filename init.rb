@@ -28,7 +28,7 @@ Redmine::Plugin.register :redmine_default_assign do
   name 'Default Assign plugin'
   author 'Robert Chady / Paul Dann'
   description 'Plugin implementing Douglas Campos\' ticket-482 code as a plugin.  It has since been extended to offer other features as well.'
-  version '0.4'
+  version '0.5'
 
   settings :default => {'default_assignee_id' => nil,
                         'interactive_assignment' => true},
