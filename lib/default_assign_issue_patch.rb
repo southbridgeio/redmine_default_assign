@@ -18,9 +18,18 @@ module DefaultAssignIssuePatch
     def assign_default_assignee
       return  if not self.assigned_to.nil?
       default_assignee = self.project.default_assignee
-      return  if default_assignee.blank?
+      if default_assignee.blank?
+        self_assignment =
+          Setting.plugin_redmine_default_assign['self_assignment'] || 'false'
+        self_assignment = (self_assignment == 'true')
+        if self_assignment
+          default_assignee = User.current
+        else
+          return
+        end
+      end
       if self.project.assignable_users.include?(default_assignee)
-        self.assigned_to = self.project.default_assignee
+        self.assigned_to = default_assignee
       end
     end
   end

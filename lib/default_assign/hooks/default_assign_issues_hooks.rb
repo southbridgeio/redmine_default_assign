@@ -9,13 +9,18 @@ class DefaultAssignIssueHook < Redmine::Hook::ViewListener
     interactive_assignment = (interactive_assignment == 'true')
     return  if not interactive_assignment
 
-    if not context[:project].default_assignee.blank?
+    if context[:project].default_assignee.blank?
+      self_assignment =
+        Setting.plugin_redmine_default_assign['self_assignment'] || 'false'
+      self_assignment = (self_assignment == 'true')
+      default_assignee = User.current  if self_assignment
+    else
       default_assignee = context[:project].default_assignee
-      if context[:project].assignable_users.include?(default_assignee)
-        context[:issue].assigned_to_id = default_assignee.id
-      end
+    end
+    if context[:project].assignable_users.include?(default_assignee)
+      context[:issue].assigned_to_id = default_assignee.id
     end
 
     nil
-  end  
+  end
 end
