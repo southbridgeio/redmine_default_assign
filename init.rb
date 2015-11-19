@@ -32,6 +32,7 @@ Redmine::Plugin.register :redmine_default_assign do
   version '0.6'
 
   settings :default => {'default_assignee_id' => nil,
-                        'interactive_assignment' => true},
+                        'interactive_assignment' => true,
+                        'self_assignment' => false},
            :partial => 'settings/default_assign'
 end
