@@ -5,7 +5,7 @@ fr:
   default_assign_settings_help: "Assignement par defaut pour les nouveaux projets"
   interactive_assignment: "Assignement interactif"
   interactive_assignment_explanation: >
-    Quand vous créez une nouvel demande, le plugin peut peupler le champs
+    Quand vous créez une nouvelle demande, le plugin peut peupler le champs
     "Assigné à" immédiatement avec le choix vous avez faite si dessus avant
     que vous ayez créé la demande. Par contre, quand vous changiez certains
     champs, le formulaire est rechargé et le champs "Assigné à" est calculé
@@ -13,3 +13,10 @@ fr:
     vous pouvez faire le choix vous-même:
   label_user: "Utilisateur"
   none_selected: "<Aucun>"
+  self_assignment: "Assignement de l'auteur"
+  self_assignment_explanation: >
+    Quand on crée une nouvelle demande sans assignement, et il n'y a aucun
+    assignement par défaut spécifié pour le project, sélectionez la case
+    si-dessous pour tentir l'assignement de l'auteur de la demande. Sans
+    sélection, il n'y aura aucun assignement pour la demande, ce qui est le
+    comportement normal de Redmine.
