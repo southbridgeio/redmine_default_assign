@@ -14,8 +14,9 @@ A copy of the plugin can be downloaded from {GitHub}[https://github.com/giddie/r
 == Installation and Setup
 
 1. Follow the Redmine plugin installation steps at the {Redmine Wiki}[http://www.redmine.org/wiki/redmine/Plugins].
-2. Make sure you did the <tt>rake redmine:plugins:migrate RAILS_ENV=production</tt> step from above.
-3. Restart your Redmine web servers (e.g. mongrel, thin, mod_rails).
+2. Ensure that the plugin directory is named <tt>redmine_default_assign</tt>, without a version number or branch name added to the end. If the directory is named incorrectly, the plugin will fail.
+3. Make sure you did the <tt>rake redmine:plugins:migrate RAILS_ENV=production</tt> step from above.
+4. Restart your Redmine web servers (e.g. mongrel, thin, mod_rails).
 
 == Special Note
 
