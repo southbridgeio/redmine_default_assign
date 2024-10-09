@@ -3,14 +3,20 @@ require 'redmine'
 # Including dispatcher.rb in case of Rails 2.x
 require 'dispatcher' unless Rails::VERSION::MAJOR >= 3
 
-require 'default_assign_issue_patch'
-require 'default_assign_project_patch'
-require 'default_assign/hooks/default_assign_projects_hooks'
-require 'default_assign/hooks/default_assign_issues_hooks.rb'
+require './plugins/redmine_default_assign/lib/default_assign_issue_patch'
+require './plugins/redmine_default_assign/lib/default_assign_project_patch'
+require './plugins/redmine_default_assign/lib/default_assign/hooks/default_assign_projects_hooks'
+require './plugins/redmine_default_assign/lib/default_assign/hooks/default_assign_issues_hooks'
 
 if Rails::VERSION::MAJOR >= 3
-  reloader = defined?(ActiveSupport::Reloader) ? ActiveSupport::Reloader : ActionDispatch::Reloader
-  reloader.to_prepare do
+  register_after_redmine_initialize_proc =
+    if Redmine::VERSION::MAJOR >= 5
+      Rails.application.config.public_method(:after_initialize)
+    else
+      reloader = defined?(ActiveSupport::Reloader) ? ActiveSupport::Reloader : ActionDispatch::Reloader
+      reloader.public_method(:to_prepare)
+    end
+  register_after_redmine_initialize_proc.call do
     require_dependency 'project'
     require_dependency 'issue'
     Project.send(:include, DefaultAssignProjectPatch)
