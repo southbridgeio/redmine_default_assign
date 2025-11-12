@@ -4,8 +4,6 @@ module DefaultAssignProjectPatch
     base.send(:include, InstanceMethods)
 
     base.class_eval do
-      unloadable
-
       safe_attributes :default_assignee_id
       belongs_to :default_assignee, :class_name => "Principal"
       before_create :set_default_assignee

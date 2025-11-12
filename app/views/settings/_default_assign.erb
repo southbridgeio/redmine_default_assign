@@ -19,9 +19,7 @@
                    unless selected.blank?
                    Integer(selected)
                    end
-                   ),
-                   :multiple => false,
-                   :size => 5)
+                   ))
       %>
     <% else %>
       <%= link_to(l(:default_assign_missing_users),
