@@ -6,8 +6,6 @@ module DefaultAssignIssuePatch
 
     # Same as typing in the class
     base.class_eval do
-      unloadable
-
       before_create :assign_default_assignee
     end
   end
